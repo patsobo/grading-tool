@@ -36,13 +36,13 @@ From there, the tool will go through each ungraded submission, compile it, then 
 
 From there, a bunch of prompts appear sequentially in the original window.  First, there is a prompt for inputting a comment, and after that for inputting a grade.  After that is a prompt for inputting the partner's name (which should be in the comment).  The tool will make sure this person exists before accepting the input.  His/her grade will automatically be updated as well.
 
-If something went wrong during this process that the tool can't handle, and the grader can't make a fair grade using the tool, the grade can be skipped by just leaving it blank and pressing enter.  Then, after all the grading is done, the grader can navigate to the user's directory inside the newly created `submissions/` directory and check it out or run that project on Eclipse independently.  Then they can go to Canvas and update the grade manually.
+If something went wrong during this process that the tool can't handle, and the grader can't make a fair grade using the tool, the grade can be skipped by just leaving it blank and pressing enter.  I imagine this will happen a lot, unfortunately, because this current semester (Spring 2017) is kind of the "test" semester.
 
 After all this, the tool will close all the opened windows, and move on to the next ungraded submission.
 
 ### Upgrading
 
-This tool uses set versions for JUnit and Hamcrest (currently, JUnit 4.12 and Hamcrest 1.3).  These are jar files found in the <code>jars/</code> directory.  To update them, or use a different version, go to [this website](https://github.com/junit-team/junit4/wiki/Download-and-Install), download the jars you want to use, and put them in the <code>jars</code> directory.
+This tool uses set versions for JUnit and Hamcrest (currently, JUnit 4.12 and Hamcrest 1.3).  These are jar files found in the <code>jars/</code> directory.  To update them, or use a different version, go to [this website](https://github.com/junit-team/junit4/wiki/Download-and-Install), download the jars you want to use, and put them in the <code>jars/</code> directory.
 
 ### Future considerations
 
