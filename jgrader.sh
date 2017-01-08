@@ -225,18 +225,6 @@ function grading_loop {
 	exit
 }
 
-function post_grade {
-	# ask for grade from grader
-	# POST that grade to the submission
-	exit
-}
-
-function post_comment {
-	# ask for comment from user
-	# POST that comment to the submission
-	exit
-}
-
 # I think you don't even need the cookies
 # Yes, I tried without cookies and it worked.  I'm keeping them just in case I need it later
 function download_file {

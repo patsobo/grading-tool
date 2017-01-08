@@ -24,7 +24,7 @@ readarray result < <(find "src/" -type f -print0 | xargs -0 grep -l "${search_pa
 test_dir=$(echo "${result[0]}" | sed 's/^....//' | sed 's/\/.*.java//')
 
 # includes junit, src w/ all the files, and bin for running tests 
-classpath=$(pwd)/bin:${2}/junit-4.12.jar:${2}/hamcrest-core-1.3.jar:src
+classpath=$(pwd)/bin:${2}/junit-*.jar:${2}/hamcrest-core-*.jar:src
 
 #java_files
 
