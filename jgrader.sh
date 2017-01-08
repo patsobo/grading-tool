@@ -38,8 +38,6 @@ function GET {
 #courses/4/assignments/81/submissions
 
 function PUT {
-	echo "PUT command: -d {\"${2}\":\"${3}\"} ${site}/api/v1/${1} 1> NUL 2> NUL"
-
 	curl -s -X PUT -H "Authorization: Bearer ${token}" \
 		-H "Content-Type: application/x-www-form-urlencoded" \
 		-d "${2}"="${3}" "${site}/api/v1/${1}" 1> NUL 2> NUL
@@ -152,7 +150,7 @@ function grading_loop {
 	done
 	rmdir tmpdir
 	cd .. # go back to original dir
-	echo "Finished downloading"
+	echo "Finished downloading."
 	echo
 
 	# TODO: ask if there are tests
@@ -195,14 +193,15 @@ function grading_loop {
 		partner="no one else"
 		echo -n "Submitting to $partner as well.  If correct, press enter; otherwise input correct name: "
 		read partner
+		partner=$(echo -n "$partner")
 		GET "courses/${course}/sections/${section}/" "include[]" "students"
-		puid=$(echo $json | jq ".students | map(select(.name=="$partner")) | .[] .id")		
-		while [-z "$puid" || -n "$partner"]; do
+		puid=$(echo $json | jq ".students | map(select(.name==\"$partner\")) | .[] .id")		
+		while [ -z "$puid" ] && [ "x$partner" != "x" ]; do
 			echo -n "Couldn't find $partner.  Try again: "
 			read partner
-			puid=$(echo $json | jq ".students | map(select(.name=="$partner")) | .[] .id")
-			done
-		fi
+			partner=$(echo -n "$partner")
+			puid=$(echo $json | jq ".students | map(select(.name==\"$partner\")) | .[] .id")
+		done
 
 		# make Canvas API calls
 		PUT "sections/${section}/assignments/${assignment}/submissions/${uid}" \
@@ -219,6 +218,8 @@ function grading_loop {
 			echo $pid
 			kill $pid	
 		done
+		echo
+		echo "................................................................."
 		echo
 	done
 	exit
@@ -256,7 +257,7 @@ function download_file {
 ###################### MAIN TYPE THING ##############################
 
 # GET all courses, find specific course named w/e
-get_course "Introduction to Oceanography"
+get_course "Software Engineering"
 # GET all sections of course, ask user which section to grade for
 get_section
 # GET all assignments in that section, ask user which one to grade for
@@ -268,7 +269,3 @@ get_submissions
 grading_loop
 
 run_test
-
-
-
-#curl -u psobolew@mymail.mines.edu:Cjsxkj5XhxSm4idIfMJD -O 'https://colorado-school-of-mines.acme.instructure.com/files/8/download?download_frd=1\u0026verifier=9zVWUVTn13xGuWelcoNHKBVwdCp9reyNBLTLAok5'

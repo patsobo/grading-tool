@@ -1,3 +1,4 @@
+#!/bin/bash
 # file: test_runner.sh
 # author:  Patrick Sobolewski
 # description: Automatically finds, compiles, and runs all junit tests.

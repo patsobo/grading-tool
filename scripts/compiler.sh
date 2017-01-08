@@ -1,3 +1,4 @@
+#!/bin/bash
 # file: compiler.sh
 # author:  Patrick Sobolewski
 # description: Automatically searches for main method and compiles
