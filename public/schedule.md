@@ -8,10 +8,10 @@ A schedule of sorts that is poorly made.  Just outlines what I'll be doing in or
 1. Write JS function for executing bash script (1 hour) (**actual: 4 hours**)
 2. Write JS function for retrieving text output as a file (2 hours) (**actual: skipped**)
 3. Write bash script for compiling and running regular java project to the console (2 hours) (**actual: 3 hours**)
-4. Write bash script for running junit tests (1 hour)
-5. Write bash script for compiling (not yet running) java swing projects (1 hour)
+4. Write bash script for running junit tests (1 hour) (**actual: 3 hours**)
+5. Write bash script for compiling (not yet running) java swing projects (1 hour) (**actual: 0 hours**)
 
-Total: 7 hours
+Total: 7 hours (**actual: 10 hours**)
 
 ###### Status
 
@@ -25,7 +25,7 @@ Total: 7 hours
 	- implemented running junit tests
 
 
-### Create UI w/o Canvas hookup (displaying console only)
+### Create UI w/o Canvas hookup (displaying console only) (**SKIPPED**)
 
 1. Create mock grade area div (1 hour)
 2. Create area for displaying console output + hookup with JS function #2 from previous section (1 hour)
@@ -35,7 +35,7 @@ Total: 7 hours
 6. Hookup directory tree w/ files inside src directory (3 hours)
 7. Add control for displaying entire project directory (using algorithm) (3 hours)
 
-Total: 12 hours
+Total: 12 hours (**actual: 0 hours**)
 
 ###### Status
 
@@ -46,12 +46,12 @@ Total: 12 hours
 ### Canvas APIs (beginners)
 
 1. Learn how to authenticate app for using APIs (2 hours) (**actual: 4 hours**)
-2. Learn how to make basic GET call (2 hours) (**actual: 1 hour**)
-3. Pull project name from Canvas/Blackboard (2 hours)
-4. Learn how to make POST call (1 hour)
-5. Get grading area to receive max score/send graded score (2 hous)
+2. Learn how to make basic GET call (2 hours) (**actual: 4 hour**)
+3. Pull project name from Canvas/Blackboard (2 hours) (**actual: 2 hours**)
+4. Learn how to make POST call (1 hour) (**actual: 2 hour**)
+5. Get grading area to receive max score/send graded score (2 hours) (**actual: 2 hour**)
 
-Total: 9 hours
+Total: 9 hours (**actual: 14 hours**)
 
 ###### Status
 
@@ -64,14 +64,17 @@ Total: 9 hours
 - 12/31/2016
 	- managed to upload score w/ comment
 	- still need to upload to partner as well
+- 1/7/2016
+	- partner gets uploaded too now
+	- next step is allowing for multiple partners (currently only one supported)
 
 ### Canvas APIS (more complicated)
 
-1. Pull zipped project file from Canvas (2 hours) (**actual: 1 hour**)
+1. Pull zipped project file from Canvas (2 hours) (**actual: 5 hours**)
 2. Add authentication to app (for grader to log in with) (4 hours)
-3. Create list of potential assignments and let grader click on one to download all files (3 hours)
+3. Create list of potential assignments and let grader click on one to download all files (3 hours) (**actual: 4 hours**)
 
-Total: 9 hours
+Total: 9 hours (**currently: 9 hours**)
 
 ###### Status
 
@@ -107,8 +110,12 @@ Total: 10 hours
 - 12/29/2016
 	 - skipped for now
 
+###### Overhead
+
+Stuff like writing documents and learning and experimenting with unfamiliar technologies such as jq and sed have totaled, approximately, **10 hours**.
+
 ### Grand Total
 
-55 hours...for now
+55 hours...for now (**currently: 43**)
 
 If I spend 5 hours/week for the school year, then 10 hours/week over break, this tool should get done a little after New Year's, just in time for testing in the new semester.

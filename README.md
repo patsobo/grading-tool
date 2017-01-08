@@ -32,8 +32,11 @@ From there, the tool will go through each ungraded submission, compile it, then 
 - the output of the program (if the assignment has a Swing GUI, it will display that; otherwise, console output will just be printed in a new terminal window)
 - the results of junit tests, if any
 - a text editor (default sublime) will display the source code for the grader to review
+- the original window will display the user's submission comment
 
-The original window will then post the user's comment.  From there, a bunch of prompts appear sequentially.  First, there is a prompt for inputting a comment, and after that for inputting a grade.  After that is a prompt for inputting the partner's name (which should be in the comment).  The tool will make sure this person exists before accepting the input.  His/her grade will automatically be updated as well.
+From there, a bunch of prompts appear sequentially in the original window.  First, there is a prompt for inputting a comment, and after that for inputting a grade.  After that is a prompt for inputting the partner's name (which should be in the comment).  The tool will make sure this person exists before accepting the input.  His/her grade will automatically be updated as well.
+
+If something went wrong during this process that the tool can't handle, and the grader can't make a fair grade using the tool, the grade can be skipped by just leaving it blank and pressing enter.  Then, after all the grading is done, the grader can navigate to the user's directory inside the newly created `submissions/` directory and check it out or run that project on Eclipse independently.  Then they can go to Canvas and update the grade manually.
 
 After all this, the tool will close all the opened windows, and move on to the next ungraded submission.
 
