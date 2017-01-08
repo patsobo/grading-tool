@@ -21,7 +21,7 @@ To run the scripts in this tool, you will need a system with a Bash shell.  Furt
 
 I'm not sure if these are the correct commands, I'm just making a guess.
 
-Furthermore, the grader must grant OAuth 2.0 access or whatever to this tool.  To do so, do this: BLAH BLAH BLAH I WILL UPDATE THIS LATER.
+Furthermore, the grader must grant OAuth 2.0 access or whatever to this tool.  Currently, this hasn't been implemented.  I have just inserted the access token directly into the script.  Technically, creating your own token for your account and pasting it into the script is against Canvas' user policies, so don't do that.  I'll hopefully have the OAuth 2.0 stuff done very soon.
 
 ### Usage
 
