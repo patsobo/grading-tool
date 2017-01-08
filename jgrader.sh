@@ -129,6 +129,8 @@ function grading_loop {
 	readarray att_id < <( echo ${submissions} | jq -r "map(.attachments[].url, .user_id) | .[]" )
 	readarray name_comments < <( echo ${submissions} | jq -r "map(.attachments[].filename, .submission_comments) | .[]")
 	# make a dir to hold all the attachments
+	# and blow up the old one
+	rm -rf submissions
 	mkdir submissions
 	cd submissions
 	mkdir tmpdir
@@ -153,8 +155,10 @@ function grading_loop {
 	echo "Finished downloading."
 	echo
 
-	# TODO: ask if there are tests
+	# counter to track # of skipped submissions
+	ug_count=0
 
+	# loop through submissions
 	for dir in submissions/*; do
 		uid=$(echo "$dir")
 		uid=${uid##*r}	# get the userid
@@ -203,15 +207,22 @@ function grading_loop {
 			puid=$(echo $json | jq ".students | map(select(.name==\"$partner\")) | .[] .id")
 		done
 
-		# make Canvas API calls
-		PUT "sections/${section}/assignments/${assignment}/submissions/${uid}" \
-			"comment[text_comment]" "${comment}"  
-		PUT "sections/${section}/assignments/${assignment}/submissions/${uid}" \
-			"submission[posted_grade]" "${grade}"
-		PUT "sections/${section}/assignments/${assignment}/submissions/${puid}" \
-			"comment[text_comment]" "${comment}"  
-		PUT "sections/${section}/assignments/${assignment}/submissions/${puid}" \
-			"submission[posted_grade]" "${grade}"
+		# note if the submission is intended to go ungraded
+		if [ -z "$comment" ] && [-z $"grade"]; then
+			echo "Skipping submission."
+			ungraded[${ug_count}]=${uid}
+			ug_count=$((ug_count+1))
+		else
+			# make Canvas API calls
+			PUT "sections/${section}/assignments/${assignment}/submissions/${uid}" \
+				"comment[text_comment]" "${comment}"  
+			PUT "sections/${section}/assignments/${assignment}/submissions/${uid}" \
+				"submission[posted_grade]" "${grade}"
+			PUT "sections/${section}/assignments/${assignment}/submissions/${puid}" \
+				"comment[text_comment]" "${comment}"  
+			PUT "sections/${section}/assignments/${assignment}/submissions/${puid}" \
+				"submission[posted_grade]" "${grade}"
+		fi
 
 		# kill sub-processes (other terminals + sublime)
 		for pid in ${pids[@]}; do
@@ -221,6 +232,11 @@ function grading_loop {
 		echo
 		echo "................................................................."
 		echo
+	done
+
+	echo "Congrats on finishing!  Here are the ungraded submission ids: "
+	for id in ${ungraded[@]}; do
+		echo $id
 	done
 	exit
 }

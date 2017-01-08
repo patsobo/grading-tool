@@ -10,18 +10,18 @@ This tool will help in automating a lot of the grading for a class.  It allows t
 
 ### Requirements
 
-To run the scripts in this tool, you will need a system with a Bash shell.  Furthermore, you need to make sure you have the following tools: wget, java, javac, and subl.  To install them, run the following commands: 
+To run the scripts in this tool, you will need a system with a Bash shell.  Furthermore, you need to make sure you have the following tools: wget, sed, jq, java, javac, subl.  To install them, run the following commands: 
 
-    sudo apt-get install wget
+    sudo apt-get install jq
     sudo apt-get install java
     sudo apt-get install javac
 	sudo add-apt-repository ppa:webupd8team/sublime-text-3
 	sudo apt-get update
 	sudo apt-get install sublime-text-installer
 
-I'm not sure if these are the correct commands, I'm just making a guess.
+I'm not sure if these are the correct commands, I'm just making a guess.  As you can see, there are a lot of dependencies.  This tool also uses `sed` and `wget`, but I think most Linux distributions already have those tools by default. 
 
-Furthermore, the grader must grant OAuth 2.0 access or whatever to this tool.  Currently, this hasn't been implemented.  I have just inserted the access token directly into the script.  Technically, creating your own token for your account and pasting it into the script is against Canvas' user policies, so don't do that.  I'll hopefully have the OAuth 2.0 stuff done very soon.
+Additionally, the grader must grant OAuth 2.0 access or whatever to this tool.  Currently, this hasn't been implemented.  I have just inserted the access token directly into the script.  Technically, creating your own token for your account and pasting it into the script is against Canvas' user policies, so don't do that.
 
 ### Usage
 
@@ -36,9 +36,11 @@ From there, the tool will go through each ungraded submission, compile it, then 
 
 From there, a bunch of prompts appear sequentially in the original window.  First, there is a prompt for inputting a comment, and after that for inputting a grade.  After that is a prompt for inputting the partner's name (which should be in the comment).  The tool will make sure this person exists before accepting the input.  His/her grade will automatically be updated as well.
 
-If something went wrong during this process that the tool can't handle, and the grader can't make a fair grade using the tool, the grade can be skipped by just leaving it blank and pressing enter.  I imagine this will happen a lot, unfortunately, because this current semester (Spring 2017) is kind of the "test" semester.
+If you want to skip grading the submission, leave the grade and comment prompts blank and just press enter.  Then, jgrader will list all of the submissions (as user ids) that weren't graded.  The grader can then go to those directories inside the `submissions` folder and grade them manually.
 
 After all this, the tool will close all the opened windows, and move on to the next ungraded submission.
+
+Note: running jgrader will delete whatever's currently in the submissions folder, so make sure you don't want that stuff anymore.
 
 ### Upgrading
 
@@ -56,4 +58,4 @@ I also thought it would be pretty cool if the tool could make an educated guess 
 
 This tool could possibly be extended to be useful for classes beyond the computer science department; however, this is unlikely, considering Canvas has a "SpeedGrader" tool that looks way better than mine.  This tool is really helpful for submissions that need to be compiled or whatever outside of the Canvas website and can't just be viewed with a document previewer or something.
 
-Read the documents inside the `public` folder to try and get a better idea of how this project is structure if you want to make changes.  I don't think they're written well at all, so also feel free to email me at psobolew@mines.edu with questions.
+Read the documents inside the `public` folder to try and get a better idea of how this project is structure if you want to make changes.  I don't claim I'm a master of making script tools (quite the opposite), so if something makes no sense and those admittedly poorly-written documents are don't clarify anything, please email me at psobolew@mines.edu with questions as well.
