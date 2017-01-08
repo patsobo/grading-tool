@@ -54,8 +54,10 @@ This tool also definitely needs to support adding multiple partners.  Currently,
 
 Another possible consideration is expanding the tool to work beyond just Java programs.  This should be a relatively simple upgrade to make if wanted.
 
-I also thought it would be pretty cool if the tool could make an educated guess for the partner based on the submission comment.
+I also think it would be pretty cool if the tool could make an educated guess for the partner based on the submission comment.
 
-This tool could possibly be extended to be useful for classes beyond the computer science department; however, this is unlikely, considering Canvas has a "SpeedGrader" tool that looks way better than mine.  This tool is really helpful for submissions that need to be compiled or whatever outside of the Canvas website and can't just be viewed with a document previewer or something.
+Also, if the prompy page found on the CSCI 306 web page could somehow be integrated (maybe even just opening on firefox), that would be pretty useful too.
+
+Jgrader could possibly be extended to be useful for classes beyond the computer science department; however, this is unlikely, considering Canvas has a "SpeedGrader" tool that looks way better than mine.  Jgrader is really only helpful for submissions that need to be compiled or whatever outside of the Canvas website and can't just be viewed with a document previewer or something.
 
 Read the documents inside the `public` folder to try and get a better idea of how this project is structure if you want to make changes.  I don't claim I'm a master of making script tools (quite the opposite), so if something makes no sense and those admittedly poorly-written documents are don't clarify anything, please email me at psobolew@mines.edu with questions as well.

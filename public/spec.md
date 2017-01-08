@@ -8,15 +8,15 @@ Imagine the following:
 
 Jane is the grader for CSM's CSCI 306 class, Software Engineering.  She's looking to grade Billy's Clue game, which has a nice Scooby-Doo theme to make it unique.  To grade it, Jane first needs to download the zipped up project directory that is Billy's submission.  She then needs to unzip it, compile it, and check the graphical output on Eclipse.  From there, she must record the grade and comment she wants to leave, and then manually put in everything afterwards on a clunky educational tool interface.
 
-Or she *would*, I should say, if she didn't have this grading tool.  With it, the tool will grab the zipped project file from Canvas, unzip it, compile it, and run it on any web browser!  Jane can see the code and the graphical output side-by-side.  Then, when she's decided she's ready to give a grade to the thing, there's a convenient box for slapping a grade on the assignment.  The tool then sends that grade off to Canvas for the user and the partner to be updated!
+Or she *would*, I should say, if she didn't have jgrader.  With it, the tool will grab the zipped project file from Canvas, unzip it, compile it, and run it automatically on her UNIX-based system!  Jane can see the code and the graphical output side-by-side.  Then, when she's decided she's ready to give a grade to the thing, jgrader conveniently asks for a grade and then automatically slaps it onto Canvas!
 
-*This is amazing*.  Thinks Jane. *Time for the next assignment!*  And so Jane submits the grade and the tool *automatically goes to the next submission*.  Beautiful.  Quick.  Painless.  Janes saves half her time just by not having to navigate through Canvas.
+Jane switches to her spreadsheet program to record the grade for Billy's partner, Zane, so that she can update Zane's grade later.  But wait!  Jgrader has now popped up with a prompt to input Zane's name!  As it turns out, Jgrader will also update partners' names!
 
-Jane enjoyed grading Billy's Clue game so much, she wants to use the tool for *every* assignment.  The next week, the class turns in a simple Java program that asks for names of police officers in the command line.  Jane now needs to feed input into the assignment to test the project and make sure it works.  She writes up a quick test file that is just a list of names in Notepad, and then checks all the right boxes in the grading tool.  Voila!  Each project now automatically compiles, runs, *and* inserts the text file as input.  And then, all of the results are posted on the site, right next to the code.  Jane smiles and continues her insane grading pace.
+*This is amazing*.  Thinks Jane. She closes her spreadsheet in relief.  *Time for the next assignment!*  And so Jane submits the grade and the tool *automatically goes to the next submission*.  Beautiful.  Quick.  Painless.  Janes saves half her time just by not having to navigate through Canvas.
 
-Jane looks up and sees that it's 8pm.  She started grading at 7:30pm.  *I guess I could start that OS assignment then* she muses as she loads up Starcraft on her computer.
+Jane looks up and sees that it's 8pm.  She started grading at 7:00pm.  *I guess I could start that OS assignment then* she muses before ultimately loading up Starcraft on her computer.
 
-The intention of this tool is to minimize repetitive actions, and focus on *just grading*.
+The intention of this tool is to minimize repetitive actions, and focus on just grading.
 
 
 ### Components
@@ -37,7 +37,7 @@ Because of all this, there are 6 (+1) major components to implement:
 6. **Assignment prompt popup** - Bring up the web page describing the assignment and points distribution.
 7. **Test grader** - The jUnit tests, if they exist, must be run and the results reported on a window.
 
-### Implementation notes (for technical people only)
+### Implementation notes (more technical details)
 
 1. **Text editor** - Fancy scripting with JavaScript and Node.js.
 2. **Command line** - Fancy scripting with JavaScript and Node.js.
@@ -54,6 +54,7 @@ The flow of data will be something like:
 4. unzip, compile, and run project and junit tests (if any)
 	- junit tests will execute in new terminal window
 	- swing GUI will pop up separately
+	- source code will pop up separately
 5. Ask for grade (out of whatever) and POST result to site
 6. Get next assignment, repeat
 
@@ -62,8 +63,7 @@ Potentially the prompt page (on the course site) will be pulled up sometime too.
 
 ### Mockup
 
-![Picture of what a typical image will look like]
-
+Well, this turned into a command-line tool, so I guess a mockup really doesn't make as much sense.
 
 ### What's *not* being supported
 
