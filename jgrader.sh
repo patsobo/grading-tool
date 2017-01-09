@@ -9,7 +9,7 @@
 
 token="121266~pMnUxk5lhFHKYG8SOBmSxp6vs4qlClYxwGYT5lhN1zcIc1qPbcui0rJZzOHQrDJq"
 site="https://colorado-school-of-mines.acme.instructure.com"
-course="Introduction to Oceanography"
+course_name="Critical Thinking"
 
 # global variables for keeping track of current assignment
 course=-1
@@ -53,7 +53,7 @@ function get_course {
 
 # asks user to pick their section
 function get_section {
-	if [ ${course} == -1 ]; then
+	if [[ ${course} == -1 ]]; then
 		exit
 	fi
 	GET "courses/${course}/sections"
@@ -76,7 +76,7 @@ function get_section {
 
 # ask user to pick the assignment to grade
 function get_assignment {
-	if [ ${course} == -1 ]; then
+	if [[ ${course} == -1 ]]; then
 		exit
 	fi
 	GET "courses/${course}/assignments"
@@ -253,7 +253,7 @@ function download_file {
 ###################### MAIN TYPE THING ##############################
 
 # GET all courses, find specific course named w/e
-get_course "$course"
+get_course "$course_name"
 # GET all sections of course, ask user which section to grade for
 get_section
 # GET all assignments in that section, ask user which one to grade for
