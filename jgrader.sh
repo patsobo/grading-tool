@@ -9,6 +9,7 @@
 
 token="121266~pMnUxk5lhFHKYG8SOBmSxp6vs4qlClYxwGYT5lhN1zcIc1qPbcui0rJZzOHQrDJq"
 site="https://colorado-school-of-mines.acme.instructure.com"
+course="Introduction to Oceanography"
 
 # global variables for keeping track of current assignment
 course=-1
@@ -42,15 +43,6 @@ function PUT {
 		-H "Content-Type: application/x-www-form-urlencoded" \
 		-d "${2}"="${3}" "${site}/api/v1/${1}" 1> NUL 2> NUL
 	#rm NUL
-}
-
-# incomplete
-function POST {
-	curl -H "Authorization: GoogleLogin auth=<<YOUR_TOKEN>>" \
-	-X POST \
-	-H "Content-type: application/json" \
-	-d '{"params":{"q":"select count(*) from [bigquery/samples/shakespeare];"},"method":"bigquery.query"}' \
-'https://www.googleapis.com/rpc'
 }
 
 # gets CSCI 306, or whatever class is specified
@@ -146,7 +138,7 @@ function grading_loop {
 			mv tmpdir user${val}
 			mkdir tmpdir
 			echo "${name_comments[$i]}" > user${val}/comment.txt
-			echo "${val}" > user${val}/metadata.txt
+			#echo "${val}" > user${val}/metadata.txt
 		fi 
 
 	done
@@ -234,7 +226,7 @@ function grading_loop {
 		echo
 	done
 
-	echo "Congrats on finishing!  Here are the ungraded submission ids: "
+	echo "Congrats on finishing!  Here are the ungraded submission ids you skipped: "
 	for id in ${ungraded[@]}; do
 		echo $id
 	done
@@ -261,7 +253,7 @@ function download_file {
 ###################### MAIN TYPE THING ##############################
 
 # GET all courses, find specific course named w/e
-get_course "Software Engineering"
+get_course "$course"
 # GET all sections of course, ask user which section to grade for
 get_section
 # GET all assignments in that section, ask user which one to grade for

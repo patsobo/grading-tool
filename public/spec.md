@@ -48,6 +48,7 @@ Because of all this, there are 6 (+1) major components to implement:
 7. **Test grader** - same tools as for compiling Java projects normally.
 
 The flow of data will be something like: 
+
 1. get the course (CSCI 306) json
 2. ask for assignment to grade (using GET requests and json parsing)
 3. get that assignment and either 1) download all submissions at once or 2) download one at a time
