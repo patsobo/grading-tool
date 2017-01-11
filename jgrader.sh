@@ -7,9 +7,8 @@
 # notes:
 #	- if you're download url isn't working, the '&' might be written as '\u0026' in the raw json
 
-token="121266~pMnUxk5lhFHKYG8SOBmSxp6vs4qlClYxwGYT5lhN1zcIc1qPbcui0rJZzOHQrDJq"
-site="https://colorado-school-of-mines.acme.instructure.com"
-course_name="Critical Thinking"
+# include data like the token, site, and course_name
+source data.sh
 
 # global variables for keeping track of current assignment
 course=-1
